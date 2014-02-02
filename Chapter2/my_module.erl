@@ -5,7 +5,8 @@
 -export([pie/0, 
 		 print/1, 
 		 either_or_both/2,
-		 area/1]).
+		 area/1,
+		 area_case/1]).
 
 pie()->
 	3.14.
@@ -23,3 +24,13 @@ area({square, Side}) ->
     Side * Side;
 area({rectangle, Height, Width}) ->
 	Height * Width.
+
+area_case(Shape) ->
+	case Shape of
+		{circle, Radius} ->
+			Radius * Radius * math:pi();
+		{square, Side} ->
+			Side * Side;
+		{rectangle, Height, Width} ->
+			Height * Width
+	end.
