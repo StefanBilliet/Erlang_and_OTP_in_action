@@ -16,7 +16,9 @@
 		 step_two/2,
 		 revert/1,
 		 tailrevert/1,
-		 tailrevert/2]).
+		 tailrevert/2,
+		 fibonacci/1,
+		 fibonacci/3]).
 
 -record(customer, {name="<anonymous>", address, phone}).
 
@@ -70,3 +72,10 @@ revert([X | TheRest]) -> revert(TheRest) ++ [X].
 tailrevert(List) -> tailrevert(List, []).
 tailrevert([X | TheRest], Acc) -> tailrevert(TheRest, [X|Acc]);
 tailrevert([], Acc) -> Acc.
+
+fibonacci(N) -> fibonacci(N, 0, 1).
+fibonacci(0, Current, _) -> 
+    Current;
+fibonacci(N, Current, Next) ->
+	fibonacci(N-1, Next, Current + Next).
+	
